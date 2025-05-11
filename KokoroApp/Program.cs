@@ -10,11 +10,13 @@ class Program
     {
         var tts = KokoroTTS.LoadModel(); // Automatically downloads the model (~320MB)
         var voice = KokoroVoiceManager.GetVoice("af_heart");
-        string tenMinuteText = File.ReadAllText("input.txt");
-        tts.SpeakFast(tenMinuteText, voice);
+        string text = File.ReadAllText("input.txt");
+        tts.SpeakFast(text, voice);
 
         // Optional: keep the app running
-        Console.WriteLine("speaking the ten Minute Text. Press Ctrl + C to exit.");
+        // Optional: keep the app running
+        Console.WriteLine("Writing speech to a wav file. Press Ctrl + C to stop.");
+        Console.WriteLine($"start time: {DateTime.Now:yyyyMMdd_HHmmssfff}");
         Console.ReadKey();
     }
 }
